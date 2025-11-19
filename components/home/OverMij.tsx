@@ -1,5 +1,9 @@
 import React from "react";
 
 export default function OverMij() {
-  return <section className="min-h-screen">Over mij</section>;
+  return (
+    <section id="over-mij" className="min-h-screen">
+      Over mij
+    </section>
+  );
 }
