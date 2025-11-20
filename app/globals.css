@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-:root {
+@theme {
   --font-heading: "Impact", sans-serif;
   --font-accent: "Caveat", cursive;
   --font-body: "Inter", sans-serif;
