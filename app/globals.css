@@ -5,8 +5,8 @@
   --font-accent: "Caveat", cursive;
   --font-body: "Inter", sans-serif;
 
-  --color-bg: #2c2c2c;
-  --color-text: #fffdf3;
-  --color-accent: #d9fe5a;
-  --color-secondary: #a49d8e;
+  --color-dgrey: #2c2c2c;
+  --color-cremewhite: #fffdf3;
+  --color-limegreen: #d9fe5a;
+  --color-beige: #a49d8e;
 }
