@@ -11,7 +11,11 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${caveat.variable} ${impact.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <main className="grid-cols-12 mx-[120px] gap-5 bg-red-200 ">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
