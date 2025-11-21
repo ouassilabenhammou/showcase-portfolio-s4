@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { getAllProjects } from "@/app/actions/projects";
+import DeleteButton from "@/app/(admin)/admin/DeleteButton";
+import {
+  getAllProjects,
+  deleteProject,
+  toggleHidden,
+} from "@/app/actions/projects";
 
 export default async function AdminPage() {
   const projects = await getAllProjects();
@@ -52,19 +57,34 @@ export default async function AdminPage() {
                         )}
                       </div>
                     </div>
+
                     <div className="ml-4 shrink-0 flex gap-2">
-                      <button className="px-3 py-1 text-sm border border-zinc-300 dark:border-zinc-700 rounded hover:bg-zinc-50 dark:hover:bg-zinc-800">
-                        {project.is_hidden ? "Show" : "Hide"}
-                      </button>
+                      {/* TOGGLE HIDDEN BUTTON */}
+                      <form
+                        action={toggleHidden.bind(
+                          null,
+                          project.id,
+                          project.is_hidden
+                        )}
+                      >
+                        <button
+                          type="submit"
+                          className="px-3 py-1 text-sm border border-zinc-300 dark:border-zinc-700 rounded hover:bg-zinc-50 dark:hover:bg-zinc-800"
+                        >
+                          {project.is_hidden ? "Show" : "Hide"}
+                        </button>
+                      </form>
+                      {/* EDIT LINK */}
                       <Link
                         href={`/admin/projects/${project.id}/edit`}
                         className="px-3 py-1 text-sm border border-zinc-300 dark:border-zinc-700 rounded hover:bg-zinc-50 dark:hover:bg-zinc-800"
                       >
                         Edit
                       </Link>
-                      <button className="px-3 py-1 text-sm border border-red-300 dark:border-red-700 text-red-600 dark:text-red-400 rounded hover:bg-red-50 dark:hover:bg-red-900/20">
-                        Delete
-                      </button>
+                      {/* DELETE BUTTON */}
+                      <form action={deleteProject.bind(null, project.id)}>
+                        <DeleteButton label="Delete" />
+                      </form>
                     </div>
                   </div>
                 </div>
