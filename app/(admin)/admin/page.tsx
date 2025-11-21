@@ -55,6 +55,7 @@ export default async function AdminPage() {
                         {project.tags && project.tags.length > 0 && (
                           <span>Tags: {project.tags.join(", ")}</span>
                         )}
+                        <span>Year: {project.year}</span>
                       </div>
                     </div>
 

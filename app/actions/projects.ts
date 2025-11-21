@@ -25,6 +25,7 @@ export type Project = {
   is_hidden: boolean;
   created_at: string;
   updated_at: string;
+  year: string;
 };
 
 // GET ALL (for admin - includes hidden projects)
@@ -55,6 +56,7 @@ export async function createProject(formData: FormData) {
   const tagsInput = formData.get("tags") as string;
   const cover_url = formData.get("cover_url") as string;
   const is_hidden = formData.get("is_hidden") === "on";
+  const year = formData.get("year") as string;
 
   // Convert comma-separated tags to array
   const tags = tagsInput
@@ -77,6 +79,7 @@ export async function createProject(formData: FormData) {
     tags: tags.length > 0 ? tags : null,
     cover_url: sanitizedCoverUrl,
     is_hidden,
+    year,
   });
 
   if (error) {
@@ -102,6 +105,7 @@ export async function updateProject(id: string, formData: FormData) {
   const tagsInput = formData.get("tags") as string;
   const cover_url = formData.get("cover_url") as string;
   const is_hidden = formData.get("is_hidden") === "on";
+  const year = formData.get("year") as string;
 
   const tags = tagsInput
     ? tagsInput
@@ -124,6 +128,7 @@ export async function updateProject(id: string, formData: FormData) {
       tags: tags.length > 0 ? tags : null,
       cover_url: sanitizedCoverUrl,
       is_hidden,
+      year,
     })
     .eq("id", id);
 
