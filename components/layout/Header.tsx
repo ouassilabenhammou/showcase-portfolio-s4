@@ -12,15 +12,15 @@ export default function Header() {
 
   const linkClasses = (name: Nav) => {
     if (name === active) {
-      return "w-[55px] h-[55px] flex items-center justify-center rounded-full bg-black text-white"; // later de kleur aanpassen
+      return "w-[55px] h-[55px] flex items-center justify-center rounded-full bg-white/10 text-limegreen"; // later de kleur aanpassen
     } else {
-      return "w-[55px] h-[55px] flex items-center justify-center text-blue"; // later de kleur aanpassen
+      return "w-[55px] h-[55px] flex items-center justify-center text-white opacity-40"; // later de kleur aanpassen
     }
   };
 
   return (
-    <header className="fixed top-2 left-1/2 -translate-x-1/2">
-      <nav className="border border-black w-[300px] h-[65px] flex justify-between items-center p-2 rounded-full">
+    <header className="fixed top-2 left-1/2 -translate-x-1/2 z-50">
+      <nav className="border border-white/15 bg-white/10 w-[300px] backdrop-blur-2xl h-[65px] flex justify-between items-center p-1 rounded-full">
         <a
           href="#"
           onClick={() => setActive("thuis")}
