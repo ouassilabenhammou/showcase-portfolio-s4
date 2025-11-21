@@ -6,7 +6,7 @@ import Contact from "@/components/home/Contact";
 
 export default function Home() {
   return (
-    <main>
+    <main className="space-y-50">
       <HeroSection />
       <OverMij />
       <Projecten />

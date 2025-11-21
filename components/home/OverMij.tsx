@@ -6,7 +6,7 @@ export default function OverMij() {
       id="over-mij"
       className="min-h-screen flex flex-col items-center justify-center"
     >
-      <h1 className="font-heading text-[48px]">OVER MIJ</h1>
+      <h1 className="font-heading text-[48px] mb-20">OVER MIJ</h1>
       <div className="h-[600px] w-full grid grid-cols-3 ">
         <div className="flex flex-col justify-between">
           <div className="max-w-[300px]">
