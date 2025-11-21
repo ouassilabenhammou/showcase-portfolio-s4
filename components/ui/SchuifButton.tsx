@@ -29,7 +29,7 @@ const SchuifButton = ({ text, href }: SchuifBtnProps) => {
   }, [x, href]);
 
   return (
-    <div className="border border-black w-[226px] h-[59px] rounded-full flex items-center p-1 ">
+    <div className="border border-white/15 bg-white/10 w-[226px] h-[59px] rounded-full flex items-center p-1 ">
       <div className="flex items-center justify-center gap-6">
         <motion.div
           drag="x"
@@ -42,7 +42,7 @@ const SchuifButton = ({ text, href }: SchuifBtnProps) => {
               animate(x, 0, { type: "spring", stiffness: 300, damping: 25 });
             }
           }}
-          className="border border-black w-12 h-12 rounded-full flex items-center justify-center bg-white z-10"
+          className="border border-white/15 bg-white/10 w-12 h-12 rounded-full flex items-center justify-center z-10"
         >
           <SchuifBtnPijl />
         </motion.div>
