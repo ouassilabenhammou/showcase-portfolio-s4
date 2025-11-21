@@ -12,9 +12,9 @@ export default function Contact() {
           mail
           {/* <Image
             src="/illustrations/mail.svg"
-            alt="Zon illustratie"
+            alt="mail illustratie"
             width={275}
-            height={0}
+            height={275}
           /> */}
         </div>
         <div className="flex flex-col items-center gap-[50px] ">

@@ -24,7 +24,7 @@ export default function OverMij() {
               src="/illustrations/zon.svg"
               alt="Zon illustratie"
               width={150}
-              height={0}
+              height={150}
             /> */}
           </div>
         </div>
@@ -50,7 +50,7 @@ export default function OverMij() {
               src="/illustrations/bloem.svg"
               alt="Bloem illustratie"
               width={130}
-              height={0}
+              height={130}
             /> */}
           </div>
           <div>
