@@ -20,7 +20,8 @@ export default async function Projecten() {
       className="min-h-screen flex flex-col items-center "
     >
       <h1 className="font-heading text-[48px] mb-20">PROJECTEN</h1>
-      <div className="w-full h-[600px] grid grid-cols-3 place-items-center">
+      <div className="w-full h-[600px] grid grid-cols-5 place-items-center">
+        {/* Accolade-links */}
         <div className="justify-self-start">
           <Image
             src="/illustrations/accolade-links.svg"
@@ -31,55 +32,70 @@ export default async function Projecten() {
         </div>
 
         {/* Projecten */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="w-full col-span-3">
+          {/* Als er geen projecten zijn */}
           {!projects || projects.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-zinc-500 dark:text-zinc-400">
-                No projects to display yet.
+                No projects to display yet
               </p>
             </div>
           ) : (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            // Preview van de projecten
+            <div>
               {projects.map((project) => (
                 <Link
                   key={project.id}
                   href={`/project/${project.slug}`}
                   className="group block"
                 >
-                  <article className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-white dark:bg-zinc-900 shadow-sm hover:shadow-md transition-shadow">
+                  <article className="w-full h-[545px] bg-white/10 border border-white/15 rounded-[10px]">
                     {project.cover_url && (
-                      <div className="relative w-full h-48">
+                      <div className="relative w-full h-full flex flex-col items-center justify-end">
                         <Image
                           src={project.cover_url}
                           alt={project.title}
                           fill
                           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                          className="object-cover"
+                          className="object-cover rounded-[15px] p-2"
                         />
+
+                        {/* Overlay */}
+                        <div className=" absolute w-full h-[543px] bg-[#161616]/40 rounded-[10px] flex "></div>
+
+                        <div className="absolute bg-white/10 border border-white/10 backdrop-blur-2xl rounded-[10px] mb-5 w-full max-w-[685px] h-[116px] flex flex-col justify-center p-10 font-body">
+                          <div className="flex flex-col gap-5">
+                            {/* Titel + Jaar */}
+                            <div className="flex justify-between">
+                              <h1 className="text-[20px] font-semibold ">
+                                {project.title}
+                              </h1>
+
+                              {project.year && (
+                                <div className="text-cremewhite/40 text-[16px]">
+                                  {project.year}
+                                </div>
+                              )}
+                            </div>
+
+                            {/* Tag */}
+
+                            {project.tags && project.tags.length > 0 && (
+                              <div className="flex flex-wrap gap-2">
+                                {project.tags.map((tag: string) => (
+                                  <span
+                                    key={tag}
+                                    className="bg-beige py-2 px-4 rounded-[3px] text-[18px]"
+                                  >
+                                    {tag}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </div>
                       </div>
                     )}
-                    <div className="p-6">
-                      <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        {project.title}
-                      </h2>
-                      {project.summary && (
-                        <p className="mt-2 text-zinc-600 dark:text-zinc-400 line-clamp-3">
-                          {project.summary}
-                        </p>
-                      )}
-                      {project.tags && project.tags.length > 0 && (
-                        <div className="mt-3 flex flex-wrap gap-2">
-                          {project.tags.map((tag: string) => (
-                            <span
-                              key={tag}
-                              className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
                   </article>
                 </Link>
               ))}
