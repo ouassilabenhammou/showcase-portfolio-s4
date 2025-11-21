@@ -15,7 +15,7 @@ const PolaroidCard = ({ src, text, className }: PolaroidCardProps) => {
         <Image src={src} alt={text} fill className="object-cover" />
       </div>
       <div className="text-center">
-        <p className="font-accent text-[24px] text-bg">{text}</p>
+        <p className="font-accent text-[24px] text-dgrey">{text}</p>
       </div>
     </div>
   );
