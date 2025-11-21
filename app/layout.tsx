@@ -1,5 +1,11 @@
 import "./globals.css";
 import { inter, caveat, impact } from "./fonts";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Ouassila - Showcase Portfolio",
+  description: "Showcase Portfolio van Ouassila",
+};
 
 export default function RootLayout({
   children,
