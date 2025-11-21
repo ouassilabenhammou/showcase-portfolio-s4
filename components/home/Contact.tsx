@@ -8,18 +8,17 @@ export default function Contact() {
         CONTACT
       </h1>
       <div className="grid grid-cols-3">
-        <div className="border border-black flex items-center ">
-          mail
-          {/* <Image
+        <div className="flex items-center ">
+          <Image
             src="/illustrations/mail.svg"
             alt="mail illustratie"
             width={275}
             height={275}
-          /> */}
+          />
         </div>
         <div className="flex flex-col items-center gap-[50px] ">
-          <p className="text-center">
-            Interesse in een samenwerking? <br /> Neem contact op
+          <p className="text-center whitespace-pre-line">
+            Interesse in een samenwerking?{"\n"} Neem contact op
           </p>
           <SchuifButton
             text="Neem contact"
