@@ -1,5 +1,5 @@
 import Link from "next/link";
-import DeleteButton from "@/app/(admin)/admin/DeleteButton";
+import DeleteButton from "@/app/admin/DeleteButton";
 import {
   getAllProjects,
   deleteProject,
