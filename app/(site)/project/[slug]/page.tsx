@@ -2,6 +2,8 @@ import { createServer } from "@/lib/supabase/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Markdown from "react-markdown";
+import ProjectButton from "@/components/ui/ProjectButton";
 
 export default async function ProjectPage({
   params,
@@ -10,106 +12,177 @@ export default async function ProjectPage({
 }) {
   const { slug } = await params;
   const supabase = await createServer();
-
   const { data: project, error } = await supabase
     .from("projects")
     .select("*")
     .eq("slug", slug)
     .single();
 
+  // Andere projecten ophalen onderaan de pagina
+
+  const { data: otherProjects } = await supabase
+    .from("projects")
+    .select("*")
+    .neq("slug", slug)
+    .limit(3);
+
   if (error || !project) {
     notFound();
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-950">
-      <nav className="border-b border-zinc-200 dark:border-zinc-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link
-            href="/"
-            className="text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-          >
-            ← Back to Portfolio
-          </Link>
-        </div>
-      </nav>
+    <div className="min-h-screen mt-30 font-body ">
+      <main>
+        <h1 className="text-[48px] font-heading mb-4 flex justify-center">
+          {project.title}
+        </h1>
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <article>
-          {project.is_hidden && (
-            <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded">
-              <p className="text-sm text-red-800 dark:text-red-200">
-                This project is hidden from the public view
-              </p>
-            </div>
-          )}
-
-          {project.cover_url && (
-            <div className="relative w-full h-96 rounded-lg mb-8 overflow-hidden">
-              <Image
-                src={project.cover_url}
-                alt={project.title}
-                fill
-                sizes="(min-width: 1024px) 768px, 100vw"
-                className="object-cover"
-                priority
-              />
-            </div>
-          )}
-
-          <header className="mb-8">
-            <h1 className="text-4xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
-              {project.title}
-            </h1>
-
-            {project.tags && project.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag: string) => (
-                  <span
-                    key={tag}
-                    className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
-                  >
-                    {tag}
-                  </span>
-                ))}
+        <article className="space-y-40">
+          <div className="">
+            {project.is_hidden && (
+              <div className="mb-4 p-3 flex justify-center items-center">
+                <p className="text-sm text-white/40">
+                  This project is hidden from the public view
+                </p>
               </div>
             )}
 
-            {project.summary && (
-              <p className="text-xl text-zinc-600 dark:text-zinc-400">
-                {project.summary}
-              </p>
-            )}
-
-            <div className="mt-4 text-sm text-zinc-500 dark:text-zinc-400">
-              <time dateTime={project.created_at}>
-                Created on{" "}
-                <span className="text-zinc-900 dark:text-zinc-100">
-                  {new Date(project.created_at).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </span>
-              </time>
+            <div className="grid grid-cols-5 ">
+              {project.cover_url && (
+                <div className="relative  col-start-2 col-end-5 w-full max-w-[835px] h-[525px] rounded-lg mb-8 overflow-hidden  bg-white/10 border border-white/15 ">
+                  <Image
+                    src={project.cover_url}
+                    alt={project.title}
+                    fill
+                    sizes="(min-width: 1024px) 768px, 100vw"
+                    className="object-cover rounded-[15px] p-2"
+                    priority
+                  />
+                </div>
+              )}
             </div>
-          </header>
 
-          {project.content && (
-            <div className="prose prose-zinc dark:prose-invert max-w-none">
-              <div className="whitespace-pre-wrap">{project.content}</div>
+            {/* Tags */}
+
+            <div>
+              {project.tags && project.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {project.tags.map((tag: string) => (
+                    <span
+                      key={tag}
+                      className="bg-beige py-2 px-4 rounded-[3px] text-[18px]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
-          )}
+          </div>
+
+          <div className="space-y-20 mb-40 ">
+            <h1 className="flex justify-center font-heading text-[48px]">
+              HET PROCES
+            </h1>
+
+            <div className="grid grid-cols-2 h-[545px] j">
+              {project.content && (
+                <div className="prose prose-zinc dark:prose-invert max-w-none flex flex-col justify-between ">
+                  <div className="whitespace-pre-wrap max-w-[428px]">
+                    <Markdown>{project.content}</Markdown>
+                  </div>
+
+                  <div className="flex gap-10">
+                    {/* Link naar GitHub */}
+
+                    {project.github_url && (
+                      <ProjectButton href={project.github_url} text="GitHub" />
+                    )}
+
+                    {project.live_url && (
+                      <ProjectButton href={project.live_url} text="Live site" />
+                    )}
+                  </div>
+                </div>
+              )}
+
+              <div className=" w-full  bg-white/10 border border-white/20 rounded-[10px] overflow-hidden">
+                Foto's van het project hier plaatsen
+              </div>
+            </div>
+          </div>
         </article>
 
-        <div className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800">
-          <Link
-            href="/"
-            className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-          >
-            ← Back to all projects
-          </Link>
-        </div>
+        {/* Andere projecten */}
+
+        {otherProjects && otherProjects.length > 0 && (
+          <section>
+            <h1 className="font-heading text-[48px] flex justify-center">
+              ANDERE PROJECTEN
+            </h1>
+
+            <div className="grid grid-cols-3 gap-5 mt-10 mb-40">
+              {otherProjects.map((otherProject) => (
+                <Link
+                  key={otherProject.id}
+                  href={`/project/${otherProject.slug}`}
+                  className="group block"
+                >
+                  <article className="w-full h-[255px] bg-white/10 border border-white/15 rounded-[10px]">
+                    {otherProject.cover_url && (
+                      <div className="relative w-full h-full flex flex-col items-center justify-end">
+                        <Image
+                          src={otherProject.cover_url}
+                          alt={otherProject.title}
+                          fill
+                          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                          className="object-cover rounded-[15px] p-2"
+                        />
+
+                        {/* Overlay */}
+
+                        <div className=" absolute w-full h-[253px] bg-[#161616]/40 rounded-[10px] flex"></div>
+
+                        <div className="absolute bg-white/10 border border-white/10 backdrop-blur-2xl rounded-[5px] mb-5 w-full max-w-[330px] h-[70px] flex flex-col justify-center p-5 font-body">
+                          <div className="flex flex-col gap-2">
+                            {/* Titel + Jaar */}
+
+                            <div className="flex justify-between">
+                              <h1 className="text-[16px] font-semibold ">
+                                {otherProject.title}
+                              </h1>
+
+                              {otherProject.year && (
+                                <div className="text-cremewhite/40 text-[12px]">
+                                  {project.year}
+                                </div>
+                              )}
+                            </div>
+
+                            {/* Tag */}
+
+                            {otherProject.tags && project.tags.length > 0 && (
+                              <div className="flex flex-wrap gap-2">
+                                {otherProject.tags.map((tag: string) => (
+                                  <span
+                                    key={tag}
+                                    className="bg-beige py-1 px-2 rounded-[3px] text-[14px]"
+                                  >
+                                    {tag}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </article>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
       </main>
     </div>
   );
