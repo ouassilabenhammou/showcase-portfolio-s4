@@ -1,6 +1,6 @@
 # Showcase Portfolio Semester 4
 
-Dit project is een **persoonlijke portfolio website** waarin ik mijn werk, vaardigheden en projecten laat zien.
+Dit project is een persoonlijke portfolio website waarin ik mijn werk, vaardigheden en projecten laat zien.
 
 De website is gebouwd met Next.js (App Router) en Tailwind CSS.
 Voor de backend heb ik Supabase gebruikt voor CRUD-functionaliteiten binnen de projecten-sectie.
@@ -11,7 +11,7 @@ Voor de backend heb ik Supabase gebruikt voor CRUD-functionaliteiten binnen de p
 - Contact sectie
 - Custom UI componenten
 
-Het doel van dit project is om mezelf professioneel te presenteren als **front-end / webdesigner** en mijn groei te tonen.
+Het doel van dit project is om mezelf professioneel te presenteren als front-end / webdesigner en mijn groei te tonen.
 
 ## Preview
 
