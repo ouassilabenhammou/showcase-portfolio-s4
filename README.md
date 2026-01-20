@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Showcase Portfolio Semester 4
 
-## Getting Started
+Dit project is een **persoonlijke portfolio website** waarin ik mijn werk, vaardigheden en projecten laat zien.
+De website is gebouwd met **Next.js (App Router)** en **Tailwind CSS** en bevat onder andere:
 
-First, run the development server:
+- Een hero sectie
+- Over mij pagina
+- Projecten overzicht
+- Contact sectie
+- Custom UI componenten
+
+Het doel van dit project is om mezelf professioneel te presenteren als **front-end / webdesigner** en mijn groei te tonen.
+
+## Preview
+
+<p>
+  <img src="./public/screenshots/home.png" width="280"/>
+  <img src="./public/screenshots/projecten.png" width="280"/>
+  <img src="./public/screenshots/contact.png" width="280"/>
+</p>
+
+## Tech stack
+
+![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+
+## Installatie
+
+### 1. Dependencies installeren
+
+```bash
+npm install
+```
+
+### 2. Development server starten
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ga naar:
+[http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Kleuren
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- ![#2c2c2c](https://placehold.co/15x15/2c2c2c/2c2c2c) `#2c2c2c`
+- ![#fffdf3](https://placehold.co/15x15/fffdf3/fffdf3.png) `#fffdf3`
+- ![#d9fe5a](https://placehold.co/15x15/d9fe5a/d9fe5a.png) `#d9fe5a`
+- ![#a49d8e](https://placehold.co/15x15/a49d8e/a49d8e.png) `#a49d8e`
 
-## Learn More
+## Mappenstructuur
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+├── app/
+│   └── Next.js App Router pagina’s & layouts
+│
+├── components/
+│   ├── home/
+│   │   ├── Contact.tsx
+│   │   ├── HeroSection.tsx
+│   │   ├── OverMij.tsx
+│   │   └── Projecten.tsx
+│   │
+│   └── layout/
+│       ├── Header.tsx
+│       └── Footer.tsx
+│
+├── ui/
+│   ├── PolaroidCard.tsx
+│   ├── ProjectButton.tsx
+│   └── SchuifButton.tsx
+│
+├── lib/
+│   └── supabase/
+│       ├── client.ts
+│       └── server.ts
+│
+├── public/
+│   ├── fonts/
+│   ├── icons/
+│   └── illustrations/
+│
+└── node_modules/
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Live link
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🔗 [https://showcase-portfolio-s4.vercel.app](https://showcase-portfolio-s4.vercel.app)
 
-## Deploy on Vercel
+Deze link brengt je naar de online versie van mijn portfolio.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Wat heb ik geleerd
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Werken met branches in Git
+- CRUD-functionaliteiten bouwen
+- Code structureren
+- Werken met ESLint & Lighthouse
+
+## Reflectie
+
+Tijdens de developmentfase van mijn showcase-portfolio heb ik bewust vanaf het
+begin gelet op een duidelijke structuur in mijn code. Dit hielp mij om overzicht te
+houden en sneller aanpassingen te maken wanneer dat nodig was.
+
+Het werken met Git en branches ging goed. Door per feature in een aparte branch te
+werken, kon ik veilig nieuwe functionaliteiten testen zonder de main branch te
+verstoren.
+
+Het bouwen van de backend met CRUD-functionaliteiten was leerzaam. Ik heb
+geleerd hoe ik projecten kan toevoegen, aanpassen en verwijderen, waardoor mijn
+portfolio flexibeler werd.
+
+Met tools zoals Lighthouse en ESLint heb ik mijn code gecontroleerd en verbeterd.
+Hiermee kon ik fouten opsporen en de kwaliteit van mijn project verhogen.
+
+In een volgend project wil ik deze tools eerder blijven inzetten om mijn codekwaliteit
+te blijven verbeteren.
+
+## Auteur
+
+Ouassila  
+Student ICT  
+Fontys Hogescholen  
+Semester 4
