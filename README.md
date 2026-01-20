@@ -1,7 +1,9 @@
 # Showcase Portfolio Semester 4
 
 Dit project is een **persoonlijke portfolio website** waarin ik mijn werk, vaardigheden en projecten laat zien.
-De website is gebouwd met **Next.js (App Router)** en **Tailwind CSS** en bevat onder andere:
+
+De website is gebouwd met Next.js (App Router) en Tailwind CSS.
+Voor de backend heb ik Supabase gebruikt voor CRUD-functionaliteiten binnen de projecten-sectie.
 
 - Een hero sectie
 - Over mij pagina
@@ -25,6 +27,9 @@ Het doel van dit project is om mezelf professioneel te presenteren als **front-e
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
+
+- Supabase (backend voor projecten: toevoegen, bewerken, verwijderen)
 
 ## Installatie
 
@@ -94,7 +99,7 @@ Deze link brengt je naar de online versie van mijn portfolio.
 ## Wat heb ik geleerd
 
 - Werken met branches in Git
-- CRUD-functionaliteiten bouwen
+- CRUD-functionaliteiten bouwen voor projecten (toevoegen, bewerken, verwijderen)
 - Code structureren
 - Werken met ESLint & Lighthouse
 
@@ -108,8 +113,8 @@ Het werken met Git en branches ging goed. Door per feature in een aparte branch 
 werken, kon ik veilig nieuwe functionaliteiten testen zonder de main branch te
 verstoren.
 
-Het bouwen van de backend met CRUD-functionaliteiten was leerzaam. Ik heb
-geleerd hoe ik projecten kan toevoegen, aanpassen en verwijderen, waardoor mijn
+Het bouwen van de backend voor de projecten-sectie met CRUD-functionaliteiten was leerzaam.
+Ik heb geleerd hoe ik projecten kan toevoegen, bewerken en verwijderen via Supabase. Waardoor mijn
 portfolio flexibeler werd.
 
 Met tools zoals Lighthouse en ESLint heb ik mijn code gecontroleerd en verbeterd.
